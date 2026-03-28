@@ -47,27 +47,13 @@ runs:
           --arg html "$EMAIL_HTML" \
           '{from:$from,to:[$to],subject:$subject,html:$html}')
 
-
-        CURL_OPT=(
-          -s
-          -X POST
-          --http1.1
-          "$EMAIL_API_URL"
-        )
-
+        CURL_OPT=( -s -X POST --http1.1 "$EMAIL_API_URL"  )
 
         CURL_HEADERS=(
           -H "Authorization: Bearer ${EMAIL_API_KEY}"
           -H "Content-Type: application/json"
         )
 
+        CURL_DATA=( -d "$JSON_DATA" )
 
-        CURL_DATA=(
-          -d "$JSON_DATA"
-        )
-
-
-        curl \
-          "${CURL_OPT[@]}" \
-          "${CURL_HEADERS[@]}" \
-          "${CURL_DATA[@]}"
+        curl "${CURL_OPT[@]}" "${CURL_HEADERS[@]}" "${CURL_DATA[@]}"
