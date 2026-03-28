@@ -1,0 +1,73 @@
+name: LIB_EMAIL
+
+inputs:
+
+  API_URL:
+    required: true
+
+  API_KEY:
+    required: true
+
+  FROM:
+    required: true
+
+  TO:
+    required: true
+
+  SUBJECT:
+    required: true
+
+  HTML:
+    required: true
+
+
+runs:
+
+  using: "composite"
+
+  steps:
+
+    - shell: bash
+
+      run: |
+
+        EMAIL_API_URL='${{ inputs.API_URL }}'
+        EMAIL_API_KEY='${{ inputs.API_KEY }}'
+
+        EMAIL_FROM='${{ inputs.FROM }}'
+        EMAIL_TO='${{ inputs.TO }}'
+        EMAIL_SUBJECT='${{ inputs.SUBJECT }}'
+        EMAIL_HTML='${{ inputs.HTML }}'
+
+
+        JSON_DATA=$(jq -n \
+          --arg from "$EMAIL_FROM" \
+          --arg to "$EMAIL_TO" \
+          --arg subject "$EMAIL_SUBJECT" \
+          --arg html "$EMAIL_HTML" \
+          '{from:$from,to:[$to],subject:$subject,html:$html}')
+
+
+        CURL_OPT=(
+          -s
+          -X POST
+          --http1.1
+          "$EMAIL_API_URL"
+        )
+
+
+        CURL_HEADERS=(
+          -H "Authorization: Bearer ${EMAIL_API_KEY}"
+          -H "Content-Type: application/json"
+        )
+
+
+        CURL_DATA=(
+          -d "$JSON_DATA"
+        )
+
+
+        curl \
+          "${CURL_OPT[@]}" \
+          "${CURL_HEADERS[@]}" \
+          "${CURL_DATA[@]}"
