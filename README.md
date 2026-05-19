@@ -1,4 +1,4 @@
-# action_send_email
+# action_send_email (actions)
 
 # Send Email via Resend API – GitHub Action
 #
