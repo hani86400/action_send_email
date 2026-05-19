@@ -1,4 +1,4 @@
-# action_send_email (actions)
+# send_email
 
 # Send Email via Resend API – GitHub Action
 #
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: SEND_EMAIL
-        uses: hani86400/action_send_email@v1
+        uses: hani86400/actions/send_email@v1
         with:
           API_URL: ${{ vars.RESEND_API_URL }}
           API_KEY: ${{ secrets.RESEND_API_KEY }}
