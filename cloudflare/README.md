@@ -45,8 +45,6 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v4
-
       - name: LIST_DNS_RECORDS
         uses: hani86400/actions/cloudflare@main
         with:
@@ -71,8 +69,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-      - uses: actions/checkout@v4
 
       - name: ADD_RECORD
         uses: hani86400/actions/cloudflare@main
@@ -106,8 +102,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-      - uses: actions/checkout@v4
 
       - name: DELETE_RECORD
         uses: hani86400/actions/cloudflare@main

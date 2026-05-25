@@ -2,7 +2,7 @@ name:     PUSH2
 run-name: PUSH2 BY ${{ github.actor }}
 on:
  push:
-    branches: ["main"] 
+    branches: ["main123"] 
  workflow_dispatch:
 
 # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
