@@ -33,7 +33,7 @@ inputs:
   REC_TTL:
     description: CloudFlare Record TTL
     required: false
-    default: Auto
+    default: 1
 
   REC_PROXIED:
     description: CloudFlare Record Content (hani86400.github.io 18.19.20.21 ...)
