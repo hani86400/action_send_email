@@ -241,9 +241,10 @@ runs:
 
       echo "<tr>" >> /tmp/cf_report
       echo "<th>ID</th>" >> /tmp/cf_report
-      echo "<th>NAME</th>" >> /tmp/cf_report
       echo "<th>TYPE</th>" >> /tmp/cf_report
+      echo "<th>NAME</th>" >> /tmp/cf_report
       echo "<th>CONTENT</th>" >> /tmp/cf_report
+      echo "<th>PROXIED</th>" >> /tmp/cf_report      
       echo "<th>TTL</th>" >> /tmp/cf_report
       echo "<th>CREATED_ON</th>" >> /tmp/cf_report
       echo "<th>MODIFIED_ON</th>" >> /tmp/cf_report
@@ -253,9 +254,10 @@ runs:
         .result[]? |
         "<tr>" +
         "<td><code>\(.id)</code></td>" +
-        "<td>\(.name)</td>" +
         "<td>\(.type)</td>" +
+        "<td>\(.name)</td>" +
         "<td>\(.content)</td>" +
+        "<td>\(.proxied)</td>" +
         "<td>\(.ttl)</td>" +
         "<td>\(.created_on)</td>" +
         "<td>\(.modified_on)</td>" +
